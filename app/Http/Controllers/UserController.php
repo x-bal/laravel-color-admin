@@ -23,8 +23,8 @@ class UserController extends Controller
 
             return DataTables::of($data)
                 ->addIndexColumn()
-                ->addColumn('action', function ($row) {
-                    $actionBtn = '<a href="' . route('users.edit', $row->id) . '" class="edit btn btn-success btn-sm">Edit</a> <a href="' . route('users.destroy', $row->id) . '" class="delete btn btn-danger btn-sm">Delete</a>';
+                ->editColumn('action', function ($row) {
+                    $actionBtn = '<a href="#modal-dialog" id="' . $row->id . '" class="btn btn-sm btn-success btn-edit" data-route="' . route('users.update', $row->id) . '" data-bs-toggle="modal"><i class="fas fa-edit"></i></a> <button type="button" data-route="' . route('users.destroy', $row->id) . '" class="delete btn btn-danger btn-delete btn-sm"><i class="fas fa-trash"></i></button>';
                     return $actionBtn;
                 })
                 ->rawColumns(['action'])

@@ -149,6 +149,15 @@
                 @endforeach
             </ol>
 
+            @if($errors->any())
+            <div class="alert alert-danger alert-dismissible fade show">
+                @foreach($errors->all() as $error)
+                {{ $error }} <br>
+                @endforeach
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></span>
+            </div>
+            @endif
+            
             <h1 class="page-header">{{ $title }}</h1>
 
             @yield('content')
